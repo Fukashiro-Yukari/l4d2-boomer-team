@@ -1,9 +1,9 @@
-printl("[Bomber Team] Loading...")
+printl("[Boomer Team] Loading...")
 
 IncludeScript("klib")
 
 if (!("KLib" in getroottable())){
-	throw "[Bomber Team] Error: Klib is not find"
+	throw "[Boomer Team] Error: Klib is not find"
 }
 
 DirectorOptions <-
@@ -53,17 +53,17 @@ function AllowTakeDamage(d){
 	if (!IsValid(a) || !IsValid(v)) return true
 	if (v.GetClass() == "infected" && a.IsPlayer() && !a.IsSurvivor()) return false
 
-	local bomber
+	local boomer
 
 	if (a.IsPlayer() && !a.IsSurvivor())
-		bomber = a
+		boomer = a
 	else if (v.IsPlayer() && !v.IsSurvivor())
-		bomber = v
+		boomer = v
 
-	if (IsValid(bomber)){
+	if (IsValid(boomer)){
 		if (a.toent() != v.toent()){
-			local e = ent().Create("env_explosion",bomber.GetPos(),QAngle(),{
-				targetname = "bomber explosion"
+			local e = ent().Create("env_explosion",boomer.GetPos(),QAngle(),{
+				targetname = "boomer explosion"
 				iRadiusOverride = 200
 				fireballsprite = "sprites/zerogxplode.spr"
 				ignoredClass = 0
@@ -74,9 +74,9 @@ function AllowTakeDamage(d){
 
 			d.Weapon = e.toent()
 
-			e.Fire("Explode","",0,bomber)
+			e.Fire("Explode","",0,boomer)
 
-			bomber.TakeDamage(999999,DMG_GENERIC)
+			boomer.TakeDamage(999999,DMG_GENERIC)
 			KLib.Util.SpawnZombie(Z_BOOMER)
 
 			return d
