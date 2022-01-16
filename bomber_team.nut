@@ -64,10 +64,10 @@ function AllowTakeDamage(d){
 		if (a.toent() != v.toent()){
 			local e = ent().Create("env_explosion",bomber.GetPos(),QAngle(),{
 				targetname = "bomber explosion"
-				iRadiusOverride = 150
+				iRadiusOverride = 200
 				fireballsprite = "sprites/zerogxplode.spr"
 				ignoredClass = 0
-				iMagnitude = 10
+				iMagnitude = 20
 				rendermode = 5
 				spawnflags = 64
 			})
